@@ -82,8 +82,18 @@ def listen():
 			dndbot.send_text_message(recipient_id, report_status)
 
 		## The Processes while gaming 
-		else:
+		# else:
+		elif GAME_STATE == 'RUNNING' or GAME_STATE == 'DECIDING':
+			print('check Game State')
+			print(GAME_STATE)
 			make_decision(recipient_id, message_text)
+
+		try:
+			if CHAR_STATE['health'] <= 0 or CHAR_STATE['money'] <= 0:
+				dndbot.send_text_message(recipient_id, '你掛啦！')
+				Action.delete_record(recipient_id)
+		except KeyError:
+			pass
 			
 
 	return 'ok', 200
@@ -122,8 +132,9 @@ def make_decision(recipient_id, message_text):
 				RAND_EVENT = respond
 				# come_across_randevt(recipient_id, message_text, respond)
 				dndbot.send_text_message(recipient_id, respond.show_event())
+
 				#### Have to display view for users to play dice
-				dndbot.send_text_message(recipient_id, '請擲骰子')
+				dndbot.send_text_message(recipient_id, respond.show_dice())
 				GAME_STATE = 'DICING'
 				return None
 			else:
@@ -145,9 +156,6 @@ def make_decision(recipient_id, message_text):
 			recipient_id, '選擇行動:\n 1) 闖蕩江湖\n 2) 販賣毒品\n 3) 購買毒品\n 4) 移動')
 
 		GAME_STATE = 'DECIDING'
-
-
-
 
 ## WARNING: message_text might be replaced by other parameters 
 # def come_across_randevt(recipient_id, message_text, event):

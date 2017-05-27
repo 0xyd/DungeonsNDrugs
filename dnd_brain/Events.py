@@ -16,13 +16,13 @@ def GodDecides(char_state):
 	total_val, event, is_rand = 1, None, False
 	evil_val  = EVIL_W  * char_state['evil']
 	money_val = MONEY_W * char_state['money']
-	evil_prob  = 0.7 * (evil_val  / (money_val + evil_val))
-	money_prob = 0.7 * (money_val / (money_val + evil_val))
+	evil_prob  = 0.5 * (evil_val  / (money_val + evil_val))
+	money_prob = 0.5 * (money_val / (money_val + evil_val))
 	gods_decision = uniform(0, total_val)
 	
-	if gods_decision < 0.3:
+	if gods_decision < 0.5:
 		return (is_rand, '交易成功')
-	elif gods_decision < 0.3 + evil_prob and evil_val > 0:
+	elif gods_decision < 0.5 + evil_prob and evil_val > 0:
 		is_rand = True
 		police_event = PoliceEvent(char_state['evil'])
 		event = police_event
@@ -42,7 +42,7 @@ def GodeMakesUSick(char_state):
 	return ()
 
 ## All Random Events.
-## (evil_var <int>, money_var <int>, health_var <int>, message <str>)
+## (evil_var <int>, money_var <int>, health_var <int>, message <str>, judge_flag <bool>)
 class JudgeEvent():
 
 	def __init__(self):
@@ -78,9 +78,16 @@ class PoliceEvent():
 	def show_event(self):
 
 		if self.event == '臨檢事件':
-			return "開車遭臨檢:\n開車行經中山路，遇到前方有警員設路障盤查，前方排隊車龍還長，心中盤算究竟該如何是好...》\n擲骰子:\n1~4  無處可逃，馬上被員警發現，並當場查獲毒品，立刻沒收並上銬帶回警局\n5~8  於前方路口迴轉加速逃逸，但立刻遭警網包圍，當場查獲毒品並帶回警局偵詢\n9~12  僅是酒測臨檢，故作鎮定順利通過"
+			return "開車遭臨檢:\n開車行經中山路，遇到前方有警員設路障盤查，前方排隊車龍還長，心中盤算究竟該如何是好...》"
 		else:
 			return "其他事件"
+
+	def show_dice(self):
+
+		if self.event == '臨檢事件':
+			return "\n擲骰子:\n1~4  無處可逃，馬上被員警發現，並當場查獲毒品，立刻沒收並上銬帶回警局\n5~8  於前方路口迴轉加速逃逸，但立刻遭警網包圍，當場查獲毒品並帶回警局偵詢\n9~12  僅是酒測臨檢，故作鎮定順利通過"
+		else:
+			return "其他事件的骰子條件"
 
 	def make_result(self, dice_value):
 
@@ -93,8 +100,15 @@ class PoliceEvent():
 
 	def _meet_police(self, dice_value):
 
-		return (0, 0, 0, '遇到警察臨檢')	
-
+		if dice_value <= 4:
+			return (
+				50, -30000, -2, 
+				'你無處可逃，馬上被員警發現，並當場查獲毒品，立刻沒收並上銬帶回警局', True)	
+		elif dice_value <= 8:
+			return (80, -17500, -5, 
+				'你於前方路口迴轉加速逃逸，但立刻遭警網包圍，當場查獲毒品並帶回警局偵詢', True)	
+		else:
+			return (0, 0, -1, '僅是酒測臨檢，故作鎮定順利通過', False)	
 
 ## Gangster Event
 class GangsterEvent():
@@ -140,7 +154,7 @@ class GangsterEvent():
 		elif self.event == '被綁架':
 			return self._be_kinapped(dice_value)
 		elif self.event == '仇家尋仇':
-			return self._b
+			return self._
 		elif self.event == '遭到背叛':
 			return self._be_betrayed(dice_value)
 
@@ -148,30 +162,30 @@ class GangsterEvent():
 
 		if dice_value < 6:
 			money_loss = -100 * dice_value
-			return (0, money_loss, 0, '你受到霸凌，損失%s元。' % (str(abs(money_loss))))
+			return (0, money_loss, 0, '你受到霸凌，損失%s元。' % (str(abs(money_loss))), False)
 		else:
-			return (0, 0, 0, '惡霸無法得逞。')
+			return (0, 0, 0, '惡霸無法得逞。', False)
 
 	def _be_betrayed(self):
 
-		return (0,0,0, '遭到背叛')
+		return (0,0,0, '遭到背叛', False)
 
 	def _be_kinapped(self, dice_value):
 		if dice_value > 4:
-			return (0, 0, 0, '成功掙脫且逃逸')
+			return (0, 0, 0, '成功掙脫且逃逸', False)
 		else:
-			return (0, 0, 0, '支付贖金。')
+			return (0, 0, 0, '支付贖金。', False)
 
 	def _fight_spots(self, dice_value):
 
 		if dice_value > 3:
-			return (0, 0, 0,'搶到地盤')
+			return (0, 0, 0,'搶到地盤', False)
 		else:
-			return (0, 0, 0, '搶奪地盤失敗，負傷。')
+			return (0, 0, 0, '搶奪地盤失敗，負傷。', False)
 
 	def _be_revenged(self, dice_value):
 
-		return (0, 0, 0,'仇家尋仇')
+		return (0, 0, 0,'仇家尋仇', False)
 		
 
 class DiseaseStrokeEvent():

@@ -120,11 +120,21 @@ class Action():
 
 	@classmethod
 	def check_status(cls, user_status):
-		
 		return '玩家%s現年%s歲，健康為%s，目前擁有%s元，惡名為%s，身份是名%s' % (
-				str(user_status['user_id']), str(user_status['age']), str(user_status['health']),
-				str(user_status['money']), str(user_status['evil']), user_status['identity'].encode('utf8'))
+			str(user_status['user_id']), str(user_status['age']), str(user_status['health']),
+			str(user_status['money']), str(user_status['evil']), user_status['identity'].encode('utf8'))
 
+	@classmethod
+	def delete_record(cls, user_id):
+		cls.cursor.execute(
+			"DELETE FROM user WHERE user_id=%s" % user_id)
+		cls.cursor.execute(
+			"DELETE FROM items WHERE user_id=%s" % user_id)
+		cls.cursor.execute(
+			"DELETE FROM symptoms WHERE user_id=%s" % user_id)
+		cls.cursor.execute(
+			"DELETE FROM crime_record WHERE user_id=%s" % user_id)
+		
 	@classmethod
 	def throw_dice(cls):
 		return randint(1, 12)
@@ -140,15 +150,11 @@ class Action():
 	@classmethod
 	def sell_drugs(cls, user_status):
 		god_decision = GodDecides(user_status)
-		# if god_decision[0]:
-		# 	return god_decision[1]
-		# else:
-		# 	return cls.gain_money(user_status, transaction)
 		return god_decision
 
 	@classmethod
 	def gain_money(cls, user_status, transaction):
-		print('賺到錢了！！！')
+		
 		income = 0
 		for drug, item, price in transaction:
 			income = item * price
@@ -156,12 +162,11 @@ class Action():
 		user_status['money'] += income
 		user_status['evil']  += 20 
 
-		return (user_status, '共獲得%s元，惡名值上升%s' % 
-			(str(income), str(20)))
+		return (user_status, '共獲得%s元，惡名值上升%s' % (str(income), str(20)))
 
 	@classmethod
 	def get_event_result(cls, user_status, event, dice_value):
-		evil_var, money_var, health_var, event_message = event.make_result(dice_value)
+		evil_var, money_var, health_var, event_message, judge_flag = event.make_result(dice_value)
 		user_status['evil']   += evil_var
 		user_status['money']  += money_var
 		user_status['health'] += health_var
