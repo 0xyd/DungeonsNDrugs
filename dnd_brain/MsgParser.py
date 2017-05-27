@@ -2,6 +2,7 @@ class MsgParser():
 
 	def __init__(self, msg):
 		
+
 		# Flatten the message's json format
 		page = msg['object']
 		msg  = msg['entry'][0]['messaging'][0]
@@ -10,7 +11,8 @@ class MsgParser():
 			'is_echo'  : False,
 			'sender_id': '',
 			'text'     : '',
-			'object'   : ''
+			'object'   : '',
+			'payload'  : ''
 		}
 
 		try:
@@ -20,7 +22,8 @@ class MsgParser():
 
 			if 'is_echo' in msg['message']:
 				self.msg['is_echo'] = True
-
+			# elif 'postback' in msg['message']:
+			# 	self.msg['payload'] = msg['postback']['payload']
 		except KeyError as e:
 			pass
 
@@ -33,8 +36,13 @@ class MsgParser():
 	def get_text(self):
 		return self.msg['text']
 
+	# def get_payload(self):
+		
+	# 	return self.raw['postback']['payload']
+
 	def is_echo(self):
 		return self.msg['is_echo']
+
 
 
 		

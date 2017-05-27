@@ -16,8 +16,6 @@ def standarlise_output(clsmeth):
 
 # def update_status_vector(, money_var, health_var, evil_var):
 
-
-
 def query_user_items(cursor, user_id):
 
 	items = []
@@ -88,7 +86,7 @@ class Action():
 				'age':  16,
 				'health': 100,
 				'money' : 10000,
-				'evil'  : 0,
+				'evil'  : 50,
 				'city': '台北市',
 				'identity': '少年',
 				'items': [],
@@ -134,7 +132,7 @@ class Action():
 			"DELETE FROM symptoms WHERE user_id=%s" % user_id)
 		cls.cursor.execute(
 			"DELETE FROM crime_record WHERE user_id=%s" % user_id)
-		
+
 	@classmethod
 	def throw_dice(cls):
 		return randint(1, 12)
@@ -145,6 +143,7 @@ class Action():
 
 	@classmethod
 	def buy_drugs(cls, user_status):
+		
 		pass
 
 	@classmethod
@@ -166,15 +165,41 @@ class Action():
 
 	@classmethod
 	def get_event_result(cls, user_status, event, dice_value):
-		evil_var, money_var, health_var, event_message, judge_flag = event.make_result(dice_value)
+		evil_var, money_var, health_var, age_var, event_message, judge_flag = event.make_result(dice_value)
+		user_status['age']    += age_var
 		user_status['evil']   += evil_var
 		user_status['money']  += money_var
 		user_status['health'] += health_var
-		return event_message
+		return (event_message, judge_flag)
+
+	@classmethod
+	def start_investigation(cls, user_status):
+
+		# 販賣事件直接進入審判程序
+		if user_status['crime_state'] in set(['販賣第一級毒品', '販賣第二級毒品', '販賣第三級毒品', '販賣第四級毒品']):
+			pass
+
+	@classmethod
+	def go_to_rehab(cls, user_status):
+		pass
+
+	@classmethod
+	def go_to_big_rehab(cls, user_status):
+		pass
+
+	@classmethod
+	def go_to_court(cls, user_status):
+		return JudgeEvent(user_status)
 
 	@classmethod
 	def conduct_darksocial(cls, user_status):
 		pass
+
+
+	@classmethod
+	def be_sentenced(cls, user_status):
+		pass
+
 
 
 
