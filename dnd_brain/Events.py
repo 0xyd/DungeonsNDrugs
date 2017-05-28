@@ -178,11 +178,11 @@ class PoliceEvent():
 	def show_event(self):
 
 		if self.event == '臨檢事件':
-			return ('開車遭臨檢', '開車行經中山路，遇到前方有警員設路障盤查，前方排隊車龍還長，心中盤算究竟該如何是好...》', './public/news3.png')
+			return ('開車遭臨檢', '開車行經中山路，遇到前方有警員設路障盤查，前方排隊車龍還長，心中盤算究竟該如何是好...》', 'https://raw.githubusercontent.com/yudazilian/DungeonsNDrugs/master/dnd_brain/public/news3.png')
 		elif self.event == '檢調搜索':
-			return ("檢調搜索", "你因為事業越做越大，開始受到警方關注，警方除佈下人力跟監，亦順利聲請通訊監察，而你卻毫無察覺...某日，尖銳的電鈴聲劃破早晨的寧靜，警察：「我們是偵查隊刑警，依檢字106年0000689號搜索票執行搜索，請開門配合搜索，謝謝。」驚惶失措的你，只有幾秒反應時間...", "./public/news1.png")
+			return ("檢調搜索", "你因為事業越做越大，開始受到警方關注，警方除佈下人力跟監，亦順利聲請通訊監察，而你卻毫無察覺...某日，尖銳的電鈴聲劃破早晨的寧靜，警察：「我們是偵查隊刑警，依檢字106年0000689號搜索票執行搜索，請開門配合搜索，謝謝。」驚惶失措的你，只有幾秒反應時間...", "https://raw.githubusercontent.com/yudazilian/DungeonsNDrugs/master/dnd_brain/public/news1.png")
 		elif self.event == '刑警攻堅':
-			return ("刑警攻堅", "", "./public/news2.png")
+			return ("刑警攻堅", "", "https://raw.githubusercontent.com/yudazilian/DungeonsNDrugs/master/dnd_brain/public/news2.png")
 
 
 	def show_dice(self):
@@ -258,13 +258,13 @@ class GangsterEvent():
 	def show_event(self):
 
 		if self.event == '黑幫霸凌':
-			return ('黑幫霸凌', "身為校園邊緣人的你，加入幫派後依然沒有例外，22k幫向以財力作為地位高低衡量，窮困潦倒的你，連菜鳥都把你當小弟使喚，面對如此困境，你決定...", "./public/news8.png")
+			return ('黑幫霸凌', "身為校園邊緣人的你，加入幫派後依然沒有例外，22k幫向以財力作為地位高低衡量，窮困潦倒的你，連菜鳥都把你當小弟使喚，面對如此困境，你決定...", "https://raw.githubusercontent.com/yudazilian/DungeonsNDrugs/master/dnd_brain/public/news8.png")
 		elif self.event == '搶奪地盤':
-			return ('搶奪地盤', '販賣毒品之利益驚人，終引起幫派間之械鬥，互爭地盤，你在這場爭奪戰中，不幸遭對方幫派擄走以作為交涉籌碼，遭綁架斷水斷食的你該…', './public/news6.png')
+			return ('搶奪地盤', '販賣毒品之利益驚人，終引起幫派間之械鬥，互爭地盤，你在這場爭奪戰中，不幸遭對方幫派擄走以作為交涉籌碼，遭綁架斷水斷食的你該…', 'https://raw.githubusercontent.com/yudazilian/DungeonsNDrugs/master/dnd_brain/public/news6.png')
 		elif self.event == '仇家尋仇':
-			return ('仇家尋仇', '你初出江湖，對於道上規矩多有不知，於販賣毒品時，偶有不慎侵擾他人生意地盤。仇家們無不虎視眈眈，等待機會將所受損害加倍奉還...', './public/news4.png')
+			return ('仇家尋仇', '你初出江湖，對於道上規矩多有不知，於販賣毒品時，偶有不慎侵擾他人生意地盤。仇家們無不虎視眈眈，等待機會將所受損害加倍奉還...', 'https://raw.githubusercontent.com/yudazilian/DungeonsNDrugs/master/dnd_brain/public/news4.png')
 		elif self.event == '遭到背叛':
-			return ('遭到背叛', '', './public/news5.png')	
+			return ('遭到背叛', '', 'https://raw.githubusercontent.com/yudazilian/DungeonsNDrugs/master/dnd_brain/public/news5.png')	
 
 	def show_dice(self):
 
