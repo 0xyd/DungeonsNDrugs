@@ -109,7 +109,11 @@ def listen():
 				Action.start_investigation(CHAR_STATE)
 				evt = Action.go_to_court(CHAR_STATE)
 				dndbot.send_text_message(recipient_id, evt.judge_ask()[1])
-				dndbot.send_text_message(recipient_id, evt.show_dice()[1])
+				## Test
+				# dndbot.send_text_message(recipient_id, evt.show_dice()[1])
+				dice_value = Action.throw_dice()
+				view.gen_button_template(recipient_id, respond.show_dice(), '擲骰子', dice_value)
+				
 
 			## Working
 			# else:
@@ -145,12 +149,12 @@ def make_decision(recipient_id, message_text):
 		# 4: 移動
 		if message_text == '1':
 		# if message_payload == u'1':
-			dndbot.send_text_message(recipient_id, '開始行動1')
+			dndbot.send_text_message(recipient_id, '')
 
 		elif message_text == '2':
 		# elif message_payload == u'2':
 			
-			dndbot.send_text_message(recipient_id, '開始行動2')
+			dndbot.send_text_message(recipient_id, '販賣')
 			### For testing purpose
 			### TODO: Select Drugs to sell
 			transaction = [('安非他命', 4000, 2)]
@@ -181,11 +185,11 @@ def make_decision(recipient_id, message_text):
 			### TODO: Disease Random Strike
 
 		elif message_text == '3':
-			dndbot.send_text_message(recipient_id, '開始行動3')
+			dndbot.send_text_message(recipient_id, '進貨')
 			view.gen_carousel_sqr_template(recipient_id, AVAL_DRUGS)
 
 		elif message_text == '4':
-			dndbot.send_text_message(recipient_id, '開始行動4')
+			dndbot.send_text_message(recipient_id, '旅行')
 		
 		GAME_STATE = 'RUNNING'
 		dndbot.send_text_message(recipient_id, CHAR_STATE)
