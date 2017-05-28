@@ -165,7 +165,7 @@ def make_decision(recipient_id, message_text):
 				### Try code
 				title = RAND_EVENT.show_event()[0]
 				subtitle  = RAND_EVENT.show_event()[1]
-				image_url = ''
+				image_url = RAND_EVENT.show_event()[2]
 
 				view.gen_generic_nobutton_template(recipient_id, title, image_url, subtitle)
 
