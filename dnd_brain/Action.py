@@ -36,7 +36,7 @@ def query_user_items(cursor, user_id):
 
 class Action():
 
-	conn = sqlite3.connect('./dnd.db')
+	conn = sqlite3.connect('./dnd.db', check_same_thread=False)
 	cursor = conn.cursor()
 	record = None
 
@@ -143,7 +143,7 @@ class Action():
 
 	@classmethod
 	def buy_drugs(cls, user_status):
-		
+
 		pass
 
 	@classmethod

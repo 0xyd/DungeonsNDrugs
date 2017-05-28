@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 import re
 import json
+import ssl
 from flask import Flask, request
 from pymessenger.bot import Bot
 
@@ -199,7 +200,11 @@ def make_decision(recipient_id, message_text):
 
 if __name__ == '__main__':
 	
-	app.run()
+	context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+	context.load_cert_chain(
+		'/etc/letsencrypt/live/longtime.co/fullchain.pem', 
+		'/etc/letsencrypt/live/longtime.co/privkey.pem')
+	app.run(host='0.0.0.0', debug=True, port=443, ssl_context=context)
 
 
 
