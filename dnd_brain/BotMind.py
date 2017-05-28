@@ -86,13 +86,13 @@ def listen():
 			
 			make_decision(recipient_id, message_text)
 
-		try:
-			if CHAR_STATE['health'] <= 0 or CHAR_STATE['money'] <= 0 or CHAR_STATE['age'] >= 100:
-				dndbot.send_text_message(recipient_id, '你掛啦！')
-				Action.delete_record(recipient_id)
-				GAME_STATE = 'NULL'
-		except KeyError:
-			pass
+			try:
+				if CHAR_STATE['health'] <= 0 or CHAR_STATE['money'] <= 0 or CHAR_STATE['age'] >= 100:
+					dndbot.send_text_message(recipient_id, '你掛啦！')
+					Action.delete_record(recipient_id)
+					GAME_STATE = 'NULL'
+			except KeyError:
+				pass
 
 	elif GAME_STATE == 'DICING':
 		
