@@ -97,7 +97,7 @@ def listen():
 	elif GAME_STATE == 'DICING':
 		
 		try:
-			dice_value = message_raw['entry'][0]['messaging'][0]['postback']['payload']
+			dice_value = int(message_raw['entry'][0]['messaging'][0]['postback']['payload'])
 			act_result, start_judge = Action.get_event_result(CHAR_STATE, RAND_EVENT, dice_value)
 			dndbot.send_text_message(recipient_id, act_result)
 			GAME_STATE = 'RUNNING'
