@@ -293,9 +293,9 @@ class GangsterEvent():
 	def _be_bully(self, dice_value):
 
 		if dice_value == 1:
-			return (-500, 0, -100, 0, '怨嘆不是含著金湯匙出身的富二代，決定砍掉重練', False)
+			return (0, 0, -100, 0, '怨嘆不是含著金湯匙出身的富二代，決定砍掉重練', False)
 		elif dice_value < 9:
-			return (-200, 0, -15, 0, '任命不願抵抗，生無大志只求小確幸，過一日算一日', False)
+			return (0, 0, -15, 0, '任命不願抵抗，生無大志只求小確幸，過一日算一日', False)
 		elif dice_value < 11:
 			return (0, 0, 0, 0, '忍辱負重，持續耕耘，等待翻身的一天', False)
 		else:
