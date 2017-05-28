@@ -29,7 +29,7 @@ def verify():
 		return request.args["hub.challenge"], 200
 	return "Hello", 200
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST', 'GET'])
 def listen():
 	message = request.get_json()
 	message_raw = message # Temp user for catch different message like button.
