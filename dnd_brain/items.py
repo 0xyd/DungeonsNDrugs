@@ -2,7 +2,7 @@
 AVAL_DRUGS = [
 {
 	"title" : "K他命",
-	"image_url": "http://i.imgur.com/sZgOLMo.png",
+	"image_url": "./public/03K.png",
 	"subtitle": "一克售價450\n屬於第三級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -12,7 +12,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "安非他命",
-	"image_url": "http://i.imgur.com/xVsD38U.png",
+	"image_url": "./public/02NotSafe.png",
 	"subtitle":"一克售價1500\n屬於第二級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -22,7 +22,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "搖頭丸",
-	"image_url": "http://i.imgur.com/0SVy6IB.png",
+	"image_url": "./public/02ShakeHd.png",
 	"subtitle": "一克售價1500\n屬於第二級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -32,7 +32,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "大麻",
-	"image_url": "http://i.imgur.com/BtCjZrk.png",
+	"image_url": "./public/02Ma.png",
 	"subtitle": "一克售價800\n屬於第二級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -42,7 +42,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "海洛因",
-	"image_url": "http://i.imgur.com/JKq6oyp.png",
+	"image_url": "./public/01Hero.png",
 	"subtitle": "一克售價5000\n屬於第一級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -52,7 +52,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "嗎啡",
-	"image_url": "http://i.imgur.com/NkZCPJA.png",
+	"image_url": "./public/01Mf.png",
 	"subtitle": "一克售價4000\n屬於第一級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -62,7 +62,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "佐沛眠",
-	"image_url": "http://i.imgur.com/CiBPjuy.png",
+	"image_url": "./public/04Sleep.png",
 	"subtitle": "一克售價300\n屬於第四級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -72,7 +72,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "美沙冬",
-	"image_url": "http://i.imgur.com/h6115pH.png",
+	"image_url": "./public/02Winter.png",
 	"subtitle": "一克售價600\n屬於第二級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -82,7 +82,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "可待因",
-	"image_url": "http://i.imgur.com/7QK7Bvq.png",
+	"image_url": "./public/02Pocket.png",
 	"subtitle": "一克售價800\n屬於第二級毒品",
 	"buttons":[{
 		"type":"postback",
@@ -92,7 +92,7 @@ AVAL_DRUGS = [
 },
 {
 	"title" : "古柯鹼",
-	"image_url": "http://i.imgur.com/1EB6mQR.png",
+	"image_url": "./public/01Cocan.png",
 	"subtitle": "一克售價4000\n屬於第一級毒品",
 	"buttons":[{
 		"type":"postback",
