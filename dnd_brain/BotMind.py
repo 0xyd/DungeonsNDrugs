@@ -11,7 +11,7 @@ from items import AVAL_DRUGS
 from MsgParser import MsgParser
 from View import View
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='./static')
 dndbot = Bot(ACCESS_TOKEN)
 view = View(dndbot)
 
@@ -29,7 +29,7 @@ def verify():
 		return request.args["hub.challenge"], 200
 	return "Hello", 200
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['POST'])
 def listen():
 	message = request.get_json()
 	message_raw = message # Temp user for catch different message like button.
