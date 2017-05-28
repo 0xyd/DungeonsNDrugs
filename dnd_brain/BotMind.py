@@ -11,7 +11,7 @@ from items import AVAL_DRUGS
 from MsgParser import MsgParser
 from View import View
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_url_path='')
 dndbot = Bot(ACCESS_TOKEN)
 view = View(dndbot)
 
