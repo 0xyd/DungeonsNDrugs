@@ -112,8 +112,8 @@ def listen():
 				## Test
 				# dndbot.send_text_message(recipient_id, evt.show_dice()[1])
 				dice_value = Action.throw_dice()
-				view.gen_button_template(recipient_id, respond.show_dice(), '擲骰子', dice_value)
-				
+				view.gen_button_template(recipient_id, evt.show_dice(), '擲骰子', dice_value)
+
 
 			## Working
 			# else:
