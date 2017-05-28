@@ -274,7 +274,7 @@ class GangsterEvent():
 		elif self.event == '被綁架':
 			return self._be_kinapped(dice_value)
 		elif self.event == '仇家尋仇':
-			return self._
+			return self._be_revenged(dice_value)
 		elif self.event == '遭到背叛':
 			return self._be_betrayed(dice_value)
 
