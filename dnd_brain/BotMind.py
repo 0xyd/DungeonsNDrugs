@@ -110,11 +110,8 @@ def listen():
 				evt = Action.go_to_court(CHAR_STATE)
 				dndbot.send_text_message(recipient_id, evt.judge_ask()[1])
 				## Test
-				# dndbot.send_text_message(recipient_id, evt.show_dice()[1])
-				dice_value = Action.throw_dice()
-				view.gen_button_template(recipient_id, evt.show_dice(), '擲骰子', dice_value)
-
-
+				dndbot.send_text_message(recipient_id, evt.show_dice()[1])
+				
 			## Working
 			# else:
 			# 	dndbot.send_text_message(

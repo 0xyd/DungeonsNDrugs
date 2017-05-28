@@ -16,13 +16,13 @@ def GodDecides(char_state):
 	total_val, event, is_rand = 1, None, False
 	evil_val  = EVIL_W  * char_state['evil']
 	money_val = MONEY_W * char_state['money']
-	evil_prob  = 0.4 * (evil_val  / (money_val + evil_val))
-	money_prob = 0.4 * (money_val / (money_val + evil_val))
+	evil_prob  = 0.6 * (evil_val  / (money_val + evil_val))
+	money_prob = 0.6 * (money_val / (money_val + evil_val))
 	gods_decision = uniform(0, total_val)
 	
-	if gods_decision < 0.6:
+	if gods_decision < 0.4:
 		return (is_rand, '交易成功')
-	elif gods_decision < 0.6 + evil_prob and evil_val > 0:
+	elif gods_decision < 0.4 + evil_prob and evil_val > 0:
 		is_rand = True
 		police_event = PoliceEvent(char_state['evil'])
 		event = police_event
